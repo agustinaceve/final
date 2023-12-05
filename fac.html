@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<body>
+	 <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        .factura {
+            width: 80%;
+            margin: 0 auto;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 50px;
+        }
+
+        .titulo {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .info-cliente {
+            margin-bottom: 20px;
+        }
+
+        .detalles {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .detalles, .detalles th, .detalles td {
+            border: 1px solid #ddd;
+        }
+
+        .detalles th, .detalles td {
+            padding: 8px;
+            text-align: left;
+        }
+
+        .total {
+            text-align: right;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        e{
+
+  font-family: 'Arial', sans-serif; /* Fuente de texto del título */
+  font-size: 36px; /* Tamaño de fuente del título */
+  font-weight: bold; /* Grosor del texto del título */
+  color: #0073e6; /* Color del texto del título */
+  text-transform: uppercase; /* Convertir el título en mayúsculas */
+  letter-spacing: 2px; /* Espaciado entre letras del título */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra de texto del título */
+  margin: 0; /* Eliminar el margen del título */
+
+
+}
+#logo img{
+  	width: 150px;
+  	height: 100px;
+
+  }
+  table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+    .titulo{
+    	font-size: 30px;
+    	font-family: serif;
+    }
+    </style>
+</head>
+<body>
+	<form>
+  <div id="logo">
+    <img src="https://www.zarla.com/images/zarla-refljate-1x1-2400x2400-20220114-vyb6bbd4rt9w97f687j6.png?crop=1:1,smart&width=250&dpr=2">
+    <e>Ofrecemos soluciones de vidrio para tus necesidades</e>
+  </div>
+
+  <div class="factura">
+    <div class="titulo">Factura Tipo A</div>
+
+    <div class="info-cliente">
+      <label for="numero_factura">Número de Factura:</label>
+      <input type="text" id="numero_factura" name="numero_factura" value="numero_factura">
+
+      <label for="fecha_emision">Fecha de Emisión:</label>
+      <input type="text" id="fecha_emision" name="fecha_emision" value="fecha_emision">
+
+      <label for="cliente">Cliente:</label>
+      <input type="text" id="cliente" name="cliente" value="cliente">
+    </div>
+
+    <form id="formularioProducto">
+      <label for="producto">Producto:</label>
+      <input type="text" id="producto" name="producto" required>
+
+      <label for="cantidad">Cantidad:</label>
+      <input type="number" id="cantidad" name="cantidad" required>
+
+      <label for="precio">Precio Unitario:</label>
+      <input type="number" id="precio" name="precio" required>
+
+      <button type="button" onclick="agregarProducto()">Agregar Producto</button>
+    </form>
+
+    <table class="detalles">
+      <thead>
+        <tr>
+          <th>Producto</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody id="detalleBody">
+        <!-- Detalles se agregarán aquí dinámicamente -->
+      </tbody>
+    </table>
+  </div>
+</form>
+
+<script>
+  function agregarProducto() {
+    // Obtener valores del formulario
+    var producto = document.getElementById('producto').value;
+    var cantidad = document.getElementById('cantidad').value;
+    var precio = document.getElementById('precio').value;
+
+    // Crear nueva fila en la tabla de detalles
+    var detalleBody = document.getElementById('detalleBody');
+    var newRow = detalleBody.insertRow();
+    var cell1 = newRow.insertCell(0);
+    var cell2 = newRow.insertCell(1);
+    var cell3 = newRow.insertCell(2);
+    var cell4 = newRow.insertCell(3);
+
+    // Asignar valores a las celdas de la nueva fila
+    cell1.innerHTML = producto;
+    cell2.innerHTML = cantidad;
+    cell3.innerHTML = precio;
+    cell4.innerHTML = cantidad * precio; // Puedes calcular el total aquí o dejarlo vacío si lo calcularás después
+  }
+</script>
+
+</body>
+</html>
